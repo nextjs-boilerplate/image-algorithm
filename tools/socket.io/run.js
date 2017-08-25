@@ -6,6 +6,7 @@ import fs from 'fs-extra'
 import uuid from 'node-uuid'
 import Promise from 'bluebird'
 import { encode, decode } from 'node-base64-image'
+import uri2buffer from 'data-uri-to-buffer'
 
 const tmpDir = os.tmpdir()
 
@@ -17,7 +18,7 @@ export default (cmd, base64, params = [], send) => {
   const cmdPath = path.join(__dirname, '..', 'bin', cmd)
 
   //存输入图片
-  return Promise.promisify(decode)(Buffer.from(base64), { filename: inputFilePath })
+  return Promise.promisify(decode)(uri2buffer(base64), { filename: inputFilePath })
     .then((obj) => {
       send('save', obj)
       //运行算法

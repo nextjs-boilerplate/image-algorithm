@@ -74,7 +74,10 @@ class Index extends Component {
             </Dropzone>
           </Col>
           <Col sm={6}>
-            {src&&(<img src={src} />)}
+            {src&&(<img src={src} style={{
+              maxWidth: 200,
+              maxHeight: 200,
+            }}/>)}
           </Col>
         </Row>
       </div>

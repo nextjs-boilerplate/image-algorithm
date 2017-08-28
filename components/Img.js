@@ -5,6 +5,7 @@ class Img extends Component {
     super(props)
     this.state = {
       src: false,
+      file: false,
     }
     const reader = new FileReader();
     this.reader = reader
@@ -12,11 +13,7 @@ class Img extends Component {
       this.setState({
         src: reader.result
       })
-      window.socket.emit('file', {
-        cmd: 'cp',
-        base64: reader.result,
-        params: [],
-      })
+      props.setCurrent(reader.result)
     }
     reader.addEventListener("load", this.readerListenner, false);
     this.updateSrc(props)
@@ -32,10 +29,18 @@ class Img extends Component {
   }
 
   updateSrc({ file }) {
-    if (!file) {
-      return
-    }
-    this.reader.readAsDataURL(file)
+    setTimeout(() => {
+      if (!file) {
+        return
+      }
+      if (file === this.state.file) {
+        return
+      }
+      this.setState({
+        file,
+      })
+      this.reader.readAsDataURL(file)
+    })
   }
 
   render() {

@@ -15,14 +15,14 @@ export default (cmd, base64, params = [], send) => {
   const inputFileName = uuid(), outputFileName = uuid()
   const inputFilePath = path.join(tmpDir, `${inputFileName}`)
   const outputFilePath = path.join(tmpDir, `${outputFileName}.jpg`)
-  const cmdPath = path.join(__dirname, '..', 'bin', cmd)
+  const cmdPath = path.join(__dirname, '..', 'bin', path.basename(cmd))
 
   //存输入图片
   return Promise.promisify(decode)(uri2buffer(base64), { filename: inputFilePath })
     .then((obj) => {
       send('save', obj)
       //运行算法
-      const command = `${cmdPath} ${inputFilePath}.jpg ${outputFilePath}` + (params.length ? ' ' + params.join(' ') : '')
+      const command = `${cmdPath} -i ${inputFilePath}.jpg -o ${outputFilePath}` + (params.length ? ' ' + params.join(' ') : '')
       console.log({ command })
       return Promise.promisify(exec)(command, {})
     })

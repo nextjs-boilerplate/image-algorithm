@@ -4,3 +4,4 @@ yarn.lock
 /npm-debug.log
 /.vscode
 /yarn-error.log
+/tools/bin

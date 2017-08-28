@@ -13,7 +13,7 @@ class Img extends Component {
         src: reader.result
       })
       window.socket.emit('file', {
-        cmd: 'cp.exe',
+        cmd: 'cp',
         base64: reader.result,
         params: [],
       })

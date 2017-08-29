@@ -48,7 +48,7 @@ export default class ImgFilter extends Component {
   }
 
   dealUpdate() {
-    const { cmd } = this.props
+    const { cmd, inputPrifix, outputPrifix } = this.props
     console.log('dealUpdate')
     const { current, params } = this.state
     if (!current) {
@@ -60,6 +60,8 @@ export default class ImgFilter extends Component {
       cmd,
       base64: current,
       params: params.map(({ name, value }) => `${name}=${value}`),
+      inputPrifix,
+      outputPrifix,
     })
   }
 
@@ -110,6 +112,7 @@ export default class ImgFilter extends Component {
           }} />)}
         </Col>
       </Row>
+      <hr />
       <Row>
         {params.map(({ title, value, input }, i) => (<Col key={i} sm={6}>
           <div className="form-group">

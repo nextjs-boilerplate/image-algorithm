@@ -11,7 +11,7 @@ export default class ImgFilter extends Component {
     this.state = {
       src: false,
       current: false,
-      params: props.params,
+      params: props.params || [],
     }
 
     if (typeof window === 'undefined') {

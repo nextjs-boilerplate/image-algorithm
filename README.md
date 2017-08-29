@@ -6,14 +6,14 @@
 
 ###  将图片处理可执行文件放到tools/bin目录下，并赋予可执行权限
 
-`
+```
 cp /path/to/thresh_test tools/bin/
 chmod +x tools/bin/thresh_test
-`
+```
 
 ### 在pages/filters目录下新建一个空的js文件，填入一下内容，注意替换对应的信息
 
-`
+```
 import { Component } from 'react'
 import Layout from '../../components/LayoutBlank.js'
 import ImgFilter from '../../components/ImgFilter'
@@ -51,7 +51,7 @@ class Index extends Component {
 }
 
 export default Layout(Index)
-`
+```
 
 `<h1>图形处理工具</h1>`可替换标题
 
@@ -65,10 +65,25 @@ export default Layout(Index)
 
 ### 启动服务与访问
 
-`
+```
 chmod +x ./build-restart.sh
 ./build-restart.sh
-`
+```
 
 http://localhost/
 
+
+
+### 调整端口和域名
+
+server.js
+
+```
+httpserver.listen(80, (err) => {
+```
+
+static/js/io.js
+
+```
+window.socket = io('http://localhost:80');
+```

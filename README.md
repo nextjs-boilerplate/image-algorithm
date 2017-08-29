@@ -11,7 +11,7 @@ cp /path/to/thresh_test tools/bin/
 chmod +x tools/bin/thresh_test
 ```
 
-### 在pages/filters目录下新建一个空的js文件，填入一下内容，注意替换对应的信息
+### 在pages/filters目录下新建一个空的js文件thresh.js，填入一下内容，注意替换对应的信息
 
 ```
 import { Component } from 'react'
@@ -70,7 +70,7 @@ chmod +x ./build-restart.sh
 ./build-restart.sh
 ```
 
-http://localhost/
+http://localhost/filters/thresh
 
 
 
